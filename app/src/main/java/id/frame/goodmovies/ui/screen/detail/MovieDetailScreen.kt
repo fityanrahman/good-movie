@@ -26,14 +26,16 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.viewinterop.AndroidView
 import androidx.constraintlayout.compose.ConstraintLayout
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
+import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.YouTubePlayer
+import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.listeners.AbstractYouTubePlayerListener
+import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.views.YouTubePlayerView
 import com.skydoves.landscapist.CircularReveal
-import com.skydoves.landscapist.ShimmerParams
 import com.skydoves.landscapist.coil.CoilImage
 import id.frame.goodmovies.R
 import id.frame.goodmovies.common.Constants
@@ -65,34 +67,37 @@ fun MovieDetailScreen(
                 mutableStateOf(movie.genres)
             }
 
-            val (backdrop, poster, originalTitle) = createRefs()
+            val (video, poster, originalTitle) = createRefs()
             val (rateScore, genresFlowRow, row, description, cast, reviews) = createRefs()
 
-            CoilImage(
-                imageModel = Constants.IMAGE_BACKDROP + movie.backdropPath,
+
+            AndroidView(
                 modifier = Modifier
                     .fillMaxWidth()
-                    .height(300.dp)
-                    .constrainAs(backdrop) {},
-                contentScale = ContentScale.FillHeight,
-                alpha = 0.3f,
-                shimmerParams = ShimmerParams(
-                    baseColor = MaterialTheme.colorScheme.background,
-                    highlightColor = Color.LightGray.copy(alpha = 0.6f),
-                    durationMillis = 350, dropOff = 0.65f, tilt = 20f
-                ),
-                circularReveal = CircularReveal(duration = 350),
-                failure = { Text(text = "Gagal Memuat!") },
-            )
+                    .height(280.dp)
+                    .constrainAs(video){},
+                factory =
+                {
+                var view = YouTubePlayerView(it)
+                val fragment = view.addYouTubePlayerListener(
+                    object : AbstractYouTubePlayerListener() {
+                        override fun onReady(youTubePlayer: YouTubePlayer) {
+                            super.onReady(youTubePlayer)
+                            youTubePlayer.loadVideo(movie.trailer.results[0].key, 0f)
+                        }
+                    }
+                )
+                view
+            })
 
             CoilImage(
                 imageModel = Constants.IMAGE_POSTER + movie.posterPath,
                 modifier = Modifier
-                    .width(200.dp)
-                    .height(300.dp)
+                    .width(120.dp)
+                    .height(180.dp)
                     .clip(RoundedCornerShape(24.dp))
                     .constrainAs(poster) {
-                        centerAround(backdrop.bottom)
+                        top.linkTo(parent.top, margin = 240.dp)
                         linkTo(start = parent.start, end = parent.end)
                     },
                 circularReveal = CircularReveal(duration = 350),

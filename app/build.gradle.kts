@@ -88,6 +88,9 @@ dependencies {
     // Jetpack Compose paging
     implementation("androidx.paging:paging-compose:1.0.0-alpha15")
 
+    //Youtube Player
+    implementation ("com.pierfrancescosoffritti.androidyoutubeplayer:core:11.1.0")
+
     // Dagger Hilt
     implementation("com.google.dagger:hilt-android:2.47")
     implementation("androidx.constraintlayout:constraintlayout:2.1.4")
