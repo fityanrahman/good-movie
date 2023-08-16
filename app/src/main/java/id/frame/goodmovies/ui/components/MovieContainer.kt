@@ -1,5 +1,6 @@
 package id.frame.goodmovies.ui.components
 
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.ExperimentalLayoutApi
@@ -37,11 +38,15 @@ import id.frame.goodmovies.data.remote.movie.Movie
 fun MovieContainer(
     popular: Movie,
     genres: List<Genre>,
+    onClick: (Movie) -> Unit
 ) {
     Row(
         modifier = Modifier
             .fillMaxWidth()
             .padding(8.dp)
+            .clickable {
+                onClick(popular)
+            }
     ) {
         CoilImage(
             imageModel = Constants.IMAGE_THUMBNAIL + popular.poster_path,

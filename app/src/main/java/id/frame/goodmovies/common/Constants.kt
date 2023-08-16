@@ -12,5 +12,7 @@ object Constants {
     const val CAST_MOVIE = "/credits"
 
     const val IMAGE_THUMBNAIL = "https://image.tmdb.org/t/p/w185/"
+    const val IMAGE_POSTER = "https://image.tmdb.org/t/p/w342/"
+    const val IMAGE_BACKDROP = "https://image.tmdb.org/t/p/w780/"
 
 }

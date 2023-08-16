@@ -26,9 +26,10 @@ interface ApiService {
         @Query("with_genres") genreId: Int,
     ): MovieResponse
 
-    @GET(Constants.MOVIE)
+    @GET("${Constants.MOVIE}{movie_id}")
     suspend fun getMovieDetail(
         @Path("movie_id") movieId: Int,
+        @Query("append_to_response") appendToResponse: String = "videos,credits,reviews"
     ): MovieDetailDto
 
     @GET(Constants.MOVIE)

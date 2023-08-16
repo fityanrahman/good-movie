@@ -90,8 +90,11 @@ dependencies {
 
     // Dagger Hilt
     implementation("com.google.dagger:hilt-android:2.47")
+    implementation("androidx.constraintlayout:constraintlayout:2.1.4")
     kapt("com.google.dagger:hilt-android-compiler:2.47")
     implementation ("androidx.hilt:hilt-navigation-compose:1.0.0")
+
+    implementation ("androidx.constraintlayout:constraintlayout-compose:1.1.0-alpha03")
 
 
     testImplementation("junit:junit:4.13.2")

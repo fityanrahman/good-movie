@@ -29,6 +29,7 @@ import id.frame.goodmovies.domain.model.HomeList
 import id.frame.goodmovies.ui.components.GenreContainer
 import id.frame.goodmovies.ui.components.Header
 import id.frame.goodmovies.ui.components.MovieContainer
+import id.frame.goodmovies.ui.navigation.Screen
 
 @Composable
 fun HomeScreen(
@@ -93,7 +94,9 @@ fun HomeScreen(
                                 MovieContainer(
                                     popular = popular,
                                     genres = genres
-                                )
+                                ) { navigatedItem ->
+                                    navController.navigate(Screen.MovieDetail.route + "/${navigatedItem.id}")
+                                }
                             }
                         }
                     }
