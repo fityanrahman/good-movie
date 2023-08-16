@@ -11,5 +11,6 @@ object Constants {
     const val REVIEW_MOVIE = "/reviews"
     const val CAST_MOVIE = "/credits"
 
+    const val IMAGE_THUMBNAIL = "https://image.tmdb.org/t/p/w185/"
 
 }

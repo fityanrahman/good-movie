@@ -1,6 +1,5 @@
 package id.frame.goodmovies.ui.screen.home
 
-import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -10,10 +9,6 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.LazyRow
-import androidx.compose.foundation.lazy.grid.GridCells
-import androidx.compose.foundation.lazy.grid.GridItemSpan
-import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
-import androidx.compose.foundation.lazy.grid.items
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.MaterialTheme
@@ -33,12 +28,13 @@ import id.frame.goodmovies.R
 import id.frame.goodmovies.domain.model.HomeList
 import id.frame.goodmovies.ui.components.GenreContainer
 import id.frame.goodmovies.ui.components.Header
+import id.frame.goodmovies.ui.components.MovieContainer
 
 @Composable
 fun HomeScreen(
+    modifier: Modifier = Modifier,
     viewModel: HomeViewModel = hiltViewModel(),
     navController: NavController,
-    modifier: Modifier = Modifier
 ) {
     val state = viewModel.state.value
     val homeItems = state.homeList
@@ -87,6 +83,11 @@ fun HomeScreen(
                             item {
                                 Header(
                                     header = stringResource(R.string.popular_movies),
+                                )
+                            }
+                            items(items = homeList.popular) { popular ->
+                                MovieContainer(
+                                    popular = popular,
                                 )
                             }
                         }

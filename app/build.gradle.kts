@@ -82,7 +82,8 @@ dependencies {
     implementation("com.squareup.okhttp3:logging-interceptor:5.0.0-alpha.3")
 
     //Coil
-    implementation("io.coil-kt:coil-compose:2.2.0")
+    implementation("io.coil-kt:coil-compose:2.1.0")
+    implementation ("com.github.skydoves:landscapist-coil:1.5.3")
 
     // Jetpack Compose paging
     implementation("androidx.paging:paging-compose:1.0.0-alpha15")
