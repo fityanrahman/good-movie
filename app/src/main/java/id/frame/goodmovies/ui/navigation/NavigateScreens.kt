@@ -10,7 +10,7 @@ import id.frame.goodmovies.ui.screen.home.HomeScreen
 @Composable
 fun NavigateScreens(
     navController: NavHostController,
-    paddingValues: PaddingValues
+//    paddingValues: PaddingValues
 ) {
     NavHost(
         navController = navController,

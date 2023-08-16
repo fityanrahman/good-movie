@@ -46,12 +46,8 @@ fun MainScreen(
     val navBackStackEntry by navController.currentBackStackEntryAsState()
     val currentDestination = navBackStackEntry?.destination
 
-    Scaffold(
-        modifier = Modifier
-            .fillMaxSize()
-            .imePadding(),
-    ) {
-        NavigateScreens(navController = navController, paddingValues = it)
-    }
+    NavigateScreens(
+        navController = navController,
+    )
 
 }
