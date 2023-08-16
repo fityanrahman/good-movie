@@ -1,3 +1,15 @@
 <resources>
     <string name="app_name">Good Movies</string>
+    <string name="popular_genres">Popular Genres</string>
+    <string name="popular_movies">Popular Movies</string>
+    <string name="collapse">Collapse</string>
+    <string name="expand">Expand</string>
+    <string name="see_more">See More</string>
+    <string name="overview">Overview</string>
+    <string name="release_date">Release Date</string>
+    <string name="duration">Duration</string>
+    <string name="tmdb_score">TMDB Score</string>
+    <string name="casts">Casts</string>
+    <string name="reviews">Reviews</string>
+    <string name="play_trailer">Play Trailer</string>
 </resources>

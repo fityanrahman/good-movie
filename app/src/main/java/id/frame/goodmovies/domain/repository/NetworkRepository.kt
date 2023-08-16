@@ -26,6 +26,6 @@ interface NetworkRepository {
 
     suspend fun getCredits(id: Int): CreditsResponse
 
-    fun getHomeMoviews(): Flow<Resource<List<HomeList>>>
+    fun getHomeMovies(): Flow<Resource<List<HomeList>>>
 
 }

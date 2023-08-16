@@ -54,7 +54,7 @@ class NetworkRepositoryImpl @Inject constructor(
 
     }
 
-    override fun getHomeMoviews(): Flow<Resource<List<HomeList>>> = flow {
+    override fun getHomeMovies(): Flow<Resource<List<HomeList>>> = flow {
         emit(Resource.Loading())
         try {
             val genres = api.getGenres().genres
