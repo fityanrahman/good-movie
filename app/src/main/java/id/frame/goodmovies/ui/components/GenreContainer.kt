@@ -9,17 +9,17 @@ import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import id.frame.goodmovies.ui.theme.GoodMoviesTheme
+import id.frame.goodmovies.data.remote.genre.Genre
 
 @Composable
 fun GenreContainer(
+    genre: Genre,
     modifier: Modifier = Modifier,
-    genre: String,
+    onClick: (Genre) -> Unit
 ) {
     TextButton(
-        onClick = { /*TODO*/ },
+        onClick = { onClick(genre) },
         shape = RoundedCornerShape(12.dp),
         colors = ButtonDefaults.buttonColors(
             containerColor = MaterialTheme.colorScheme.primary,
@@ -28,7 +28,7 @@ fun GenreContainer(
         modifier = Modifier.padding(vertical = 4.dp, horizontal = 8.dp)
     ) {
         Text(
-            genre,
+            genre.name,
             style = MaterialTheme.typography.labelMedium
         )
     }

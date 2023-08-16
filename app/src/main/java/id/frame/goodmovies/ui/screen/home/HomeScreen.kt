@@ -78,7 +78,9 @@ fun HomeScreen(
                             item {
                                 LazyRow {
                                     items(homeList.genres, key = { it.id }) { genre ->
-                                        GenreContainer(genre = genre.name)
+                                        GenreContainer(genre) {navigatedItem ->
+                                            navController.navigate(Screen.MovieWithGenres.route + "/${genre.id}/${genre.name}")
+                                        }
                                     }
                                 }
                             }
