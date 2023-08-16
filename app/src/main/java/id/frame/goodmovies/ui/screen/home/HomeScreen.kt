@@ -33,9 +33,13 @@ import id.frame.goodmovies.ui.components.MovieContainer
 @Composable
 fun HomeScreen(
     modifier: Modifier = Modifier,
+    genreViewModel: GenreViewModel = hiltViewModel(),
     viewModel: HomeViewModel = hiltViewModel(),
     navController: NavController,
 ) {
+
+    val genres = genreViewModel.stateGenre.value
+
     val state = viewModel.state.value
     val homeItems = state.homeList
 
@@ -88,6 +92,7 @@ fun HomeScreen(
                             items(items = homeList.popular) { popular ->
                                 MovieContainer(
                                     popular = popular,
+                                    genres = genres
                                 )
                             }
                         }
